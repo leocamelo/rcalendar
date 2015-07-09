@@ -6,13 +6,10 @@ default: &default
 development:
   <<: *default
   database: rcalendar_development
-.
+
 test:
   <<: *default
   database: rcalendar_test
 
 production:
   <<: *default
-  database: rcalendar_production
-  username: rcalendar
-  password: <%= ENV['RCALENDAR_DATABASE_PASSWORD'] %>
