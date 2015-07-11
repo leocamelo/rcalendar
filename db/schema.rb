@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150709235200) do
     t.string   "location"
     t.date     "start_date",                  null: false
     t.time     "start_time"
-    t.date     "end_sate",                    null: false
+    t.date     "end_date",                    null: false
     t.time     "end_time"
     t.boolean  "all_day",     default: false, null: false
     t.datetime "created_at",                  null: false

@@ -26,4 +26,8 @@ group :development, :test do
   gem 'spring'
   # RSpec for unit tests
   gem 'rspec-rails'
+  # collection of testing matchers
+  gem 'shoulda-matchers'
+  # fixtures replacement with FactoryGirl
+  gem 'factory_girl_rails'
 end
