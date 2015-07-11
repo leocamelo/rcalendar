@@ -1,5 +1,8 @@
 class Api::V1::EventsController < ApplicationController
 
+  # for public api
+  skip_before_filter :verify_authenticity_token
+
   # GET /api/v1/events
   def index
     respond_to do |format|
