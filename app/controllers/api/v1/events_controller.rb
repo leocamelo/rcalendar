@@ -2,11 +2,9 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /api/v1/events
   def index
+    @events = Event.all
     respond_to do |format|
-      format.json do
-        @events = Event.all
-        render json: @events
-      end
+      format.json { render json: @events, status: 200 }
     end
   end
 
