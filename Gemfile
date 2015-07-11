@@ -31,3 +31,12 @@ group :development, :test do
   # fixtures replacement with FactoryGirl
   gem 'factory_girl_rails'
 end
+
+group :production do
+  # The Twelve-Factor App for Heroku
+  gem 'rails_12factor'
+  # Enable Rack Deflater in Heroku
+  gem 'heroku-deflater'
+  # Use Unicorn as the app server
+  gem 'unicorn', platforms: :ruby
+end
