@@ -2,9 +2,11 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /api/v1/events
   def index
-    @events = Event.all
     respond_to do |format|
-      format.json { render json: @events, status: 200 }
+      format.json do
+        @events = Event.all
+        render json: @events, status: :ok #200
+      end
     end
   end
 
@@ -14,9 +16,9 @@ class Api::V1::EventsController < ApplicationController
       format.json do
         @event = Event.new(event_params)
         if @event.save
-          render json: @event
+          render json: @event, status: :created #201
         else
-          render json: @event.errors
+          render json: @event.errors, status: :unprocessable_entity #422
         end
       end
     end
