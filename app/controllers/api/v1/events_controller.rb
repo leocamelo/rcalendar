@@ -27,6 +27,24 @@ class Api::V1::EventsController < ApplicationController
     end
   end
 
+  # PATCH /api/v1/events/:id
+  def update
+    respond_to do |format|
+      format.json do
+        if Event.exists? params[:id]
+          @event = Event.find(params[:id])
+          if @event.update(event_params)
+            render json: @event, status: :ok #200
+          else
+            render json: @event.errors, status: :unprocessable_entity #422
+          end
+        else
+          render json: { message: :not_found }, status: :not_found #404
+        end
+      end
+    end
+  end
+
   private
 
   # strong parameters for event model

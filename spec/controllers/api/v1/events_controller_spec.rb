@@ -4,7 +4,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
   describe 'GET #index' do
     before { get :index, format: :json }
-    subject { assigns(:events) }
+    subject { assigns :events }
 
     it 'responds with HTTP 200 status code' do
       expect(response).to have_http_status(200)
@@ -21,13 +21,14 @@ RSpec.describe Api::V1::EventsController, type: :controller do
     it 'render @events in json format' do
       expect(response.body).to eq(subject.to_json)
     end
+
   end
 
   describe 'POST #create' do
+    subject { assigns :event }
 
     context 'with valid params' do
       before { post :create, format: :json, event: attributes_for(:event) }
-      subject { assigns(:event) }
 
       it 'create a new event' do
         expect(Event.count).to eq(1)
@@ -48,9 +49,8 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
     context 'with invalid params' do
       before { post :create, format: :json, event: { title: 'Not valid event' } }
-      subject { assigns(:event) }
 
-      it "don't create a event" do
+      it 'not created an event' do
         expect(Event.all).to be_empty
       end
 
@@ -60,6 +60,76 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
       it 'render @event.errors in json format' do
         expect(response.body).to eq(subject.errors.to_json)
+      end
+    end
+
+  end
+
+  describe 'PATCH #update' do
+
+    context 'when event exists' do
+      let :event do
+        create(:event)
+      end
+      before do
+        patch :update, format: :json, id: event.id, event: params
+      end
+      subject { assigns :event }
+
+      context 'with valid params' do
+        let :params do
+          { title: "Hilde's birthday" }
+        end
+
+        it 'change the event attributes' do
+          expect(subject.title).to eq(params[:title])
+        end
+
+        it 'responds with HTTP 200 status code' do
+          expect(response).to have_http_status(200)
+        end
+
+        it 'assign updated event into @event' do
+          expect(subject).to eq(event)
+        end
+
+        it 'render @event in json format' do
+          expect(response.body).to eq(subject.to_json)
+        end
+      end
+
+      context 'with invalid params' do
+        let :params do
+          { title: nil }
+        end
+
+        it 'not updated the event' do
+          expect(subject.title).to_not eq(event.title)
+        end
+
+        it 'responds with HTTP 422 status code' do
+          expect(response).to have_http_status(422)
+        end
+
+        it 'render @event.errors in json format' do
+          expect(response.body).to eq(subject.errors.to_json)
+        end
+      end
+
+    end
+
+    context 'then event not exists' do
+      before do
+        patch :update, format: :json, id: 0
+      end
+
+      it 'responds with HTTP 404 status code' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'render not found message in json format' do
+        message = { message: :not_found }.to_json
+        expect(response.body).to eq(message)
       end
     end
 
