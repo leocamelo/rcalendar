@@ -11,6 +11,13 @@ class Event < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
 
+  # find all events by year
+  def self.find_by_year(year)
+    date = Date.new(year)
+    range = date.beginning_of_year..date.end_of_year
+    where(start_date: range)
+  end
+
   private
 
   # remove time values in event
