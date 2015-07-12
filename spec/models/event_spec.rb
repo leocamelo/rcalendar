@@ -6,15 +6,14 @@ RSpec.describe Event, type: :model do
     before { build :event }
 
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:start_date) }
-    it { is_expected.to validate_presence_of(:end_date) }
+    it { is_expected.to validate_presence_of(:started_at) }
   end
 
   context 'before save' do
 
-    it '#remove_time_if_all_day' do
-      event = create(:event, start_time: Time.now, all_day: true)
-      expect(event.start_time).to be_nil
+    it '#default_ended_at' do
+      event = create(:event)
+      expect(event.ended_at).to eq(event.started_at + 1.hour)
     end
 
   end

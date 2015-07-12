@@ -1,17 +1,14 @@
 class Event < ActiveRecord::Base
 
-  # remove time definitions if event is all day
-  before_save :remove_time_definitions, if: :all_day?
-  # format time definitions for database
-  before_save :set_time_format, unless: :all_day?
+  # set default ended_at value to event
+  before_save :default_ended_at
 
   # order the events by start_date
-  default_scope { order :start_date }
+  default_scope { order :started_at }
 
-  # requires title, start_date and end_date
+  # requires title, started_at and ended_at
   validates :title, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
+  validates :started_at, presence: true
 
   # find all events by date
   def self.find_by_date(args = {})
@@ -29,21 +26,14 @@ class Event < ActiveRecord::Base
       date = Date.new(year)
       (date.beginning_of_year)..(date.end_of_year)
     end
-    where(start_date: matcher)
+    where(started_at: matcher)
   end
 
   private
 
-  # remove time values in event
-  def remove_time_definitions
-    self.start_time = nil
-    self.end_time = nil
-  end
-
-  # format time values in event
-  def set_time_format
-    self.start_time = start_time.try(:strftime, '%H:%M:%S')
-    self.end_time = end_time.try(:strftime, '%H:%M:%S')
+  # ended_at is by default 1 hour forward from started_at
+  def default_ended_at
+    self.ended_at = started_at + 1.hour if ended_at.blank?
   end
 
 end

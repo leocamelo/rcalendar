@@ -28,8 +28,8 @@ class Api::V1::EventsController < Api::V1::BaseController
 
   # strong parameters for event model
   def event_params
-    params.require(:event).permit(:title, :description, :location,
-    :start_date, :start_time, :end_date, :end_time, :all_day)
+    params.require(:event).permit(:title, :description,
+    :location, :started_at, :ended_at, :all_day)
   end
 
 end
