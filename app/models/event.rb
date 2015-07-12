@@ -21,15 +21,16 @@ class Event < ActiveRecord::Base
       month = options[:month].to_i
       if options[:day]
         day = options[:day].to_i
-        date = DateTime.new(year, month, day)
+        date = Date.new(year, month, day)
         (date.beginning_of_day)..(date.end_of_day)
       else
-        date = DateTime.new(year, month)
+        date = Date.new(year, month)
         (date.beginning_of_month)..(date.end_of_month)
       end
     else
-      date = DateTime.new(year)
-      (date.beginning_of_year)..(date.end_of_year)
+      month = Date.today.month
+      date = Date.new(year, month)
+      (date.beginning_of_month)..(date.end_of_year)
     end
     where(started_at: range)
   end
