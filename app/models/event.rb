@@ -11,10 +11,18 @@ class Event < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
 
-  # find all events by year
-  def self.find_by_year(year)
-    date = Date.new(year)
-    range = date.beginning_of_year..date.end_of_year
+  # find all events by date
+  def self.find_by_date(args = {})
+    year = (args[:year] || Date.today.year).to_i
+    range =
+    if args[:month]
+      month = args[:month].to_i
+      date = Date.new(year, month)
+      (date.beginning_of_month)..(date.end_of_month)
+    else
+      date = Date.new(year)
+      (date.beginning_of_year)..(date.end_of_year)
+    end
     where(start_date: range)
   end
 
