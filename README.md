@@ -24,7 +24,7 @@ METODO | CAMINHO            | UTILIDADE
 ---------------------------------------
 GET    | /api/v1/events     | Lista todos os eventos deste ano, a partir deste mês
 POST   | /api/v1/events     | Adiciona um evento no calendário
-PATH   | /api/v1/events/:id | Atualiza o evento referenciado pela :id na rota
+PATCH   | /api/v1/events/:id | Atualiza o evento referenciado pela :id na rota
 ```
 
 Para mais informações das utilidades acima, como parâmetros e formatos, além de
