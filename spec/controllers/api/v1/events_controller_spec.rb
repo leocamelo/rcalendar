@@ -126,7 +126,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       end
 
       it 'render not found message in json format' do
-        message = { message: :not_found }.to_json
+        message = { error: :not_found }.to_json
         expect(response.body).to eq(message)
       end
     end
