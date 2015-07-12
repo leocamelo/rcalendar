@@ -21,7 +21,6 @@ RSpec.describe Api::V1::EventsController, type: :controller do
     it 'render @events in json format' do
       expect(response.body).to eq(subject.to_json)
     end
-
   end
 
   describe 'POST #create' do
@@ -44,6 +43,13 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
       it 'render @event in json format' do
         expect(response.body).to eq(subject.to_json)
+      end
+
+      context 'when conflicted event' do
+        it 'return alert in json' do
+          post :create, format: :json, event: attributes_for(:event)
+          expect(Event.last.as_json).to have_key('alert')
+        end
       end
     end
 

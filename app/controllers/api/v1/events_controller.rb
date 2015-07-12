@@ -10,6 +10,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   # POST /api/v1/events
   def create
     @event = Event.create(event_params)
+    @event.alert = t('.conflicted') if @event.has_conflicted_event?
     respond_with @event, location: nil
   end
 

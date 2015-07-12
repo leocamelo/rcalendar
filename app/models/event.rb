@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
 
+  # for set alerts in json response
+  attr_accessor :alert
+
   # set default ended_at value to event
   before_save :default_ended_at
 
@@ -11,13 +14,13 @@ class Event < ActiveRecord::Base
   validates :started_at, presence: true
 
   # find all events by date
-  def self.find_by_date(args = {})
-    year = (args[:year] || Date.today.year).to_i
+  def self.find_by_date(options = {})
+    year = (options[:year] || Date.today.year).to_i
     range =
-    if args[:month]
-      month = args[:month].to_i
-      if args[:day]
-        day = args[:day].to_i
+    if options[:month]
+      month = options[:month].to_i
+      if options[:day]
+        day = options[:day].to_i
         date = DateTime.new(year, month, day)
         (date.beginning_of_day)..(date.end_of_day)
       else
@@ -31,15 +34,22 @@ class Event < ActiveRecord::Base
     where(started_at: range)
   end
 
-  # extends default behavior for json serializer
+  # check if has other event conflicted
+  def has_conflicted_event?
+    self.class.where.not(id: self).select do |ev|
+      ev.started_at <= ended_at || ev.ended_at >= started_at
+    end.any?
+  end
+
+  # extends default behavior for json response
   def as_json(options = {})
     extensions = {
       start_date: started_at.to_date.to_s,
       start_time: started_at.strftime('%H:%M:%S'),
       end_date: ended_at.to_date.to_s,
       end_time: ended_at.strftime('%H:%M:%S')
-    }
-    super(options).merge(extensions)
+    }.stringify_keys!
+    super(options.merge(methods: :alert)).merge(extensions)
   end
 
   private
