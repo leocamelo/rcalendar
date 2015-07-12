@@ -20,7 +20,7 @@ class Api::V1::EventsController < Api::V1::BaseController
       @event.update(event_params)
       respond_with @event
     else
-      render json: { message: :not_found }, status: :not_found #404
+      render json: { error: :not_found }, status: :not_found #404
     end
   end
 
