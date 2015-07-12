@@ -19,11 +19,13 @@ O rCalendar está preparado para requisições com o padrão REST e responderá
 com o formato [JSON](http://json.org/) de serialização. Seguem as principais
 rotas e suas utilidades:
 
+```
 METODO | CAMINHO            | UTILIDADE
 ---------------------------------------
 GET    | /api/v1/events     | Lista todos os eventos deste ano, a partir deste mês
 POST   | /api/v1/events     | Adiciona um evento no calendário
 PATH   | /api/v1/events/:id | Atualiza o evento referenciado pela :id na rota
+```
 
 Para mais informações das utilidades acima, como parâmetros e formatos, além de
 exemplos em algumas linguagens, visite o [Demo Online](https://rcalendar.herokuapp.com) da api.
