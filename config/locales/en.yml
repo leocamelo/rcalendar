@@ -1,4 +1,6 @@
 en:
-  alert:
-    event:
-      conflicted: Already exists a event in this time range
+  api:
+    v1:
+      events:
+        create:
+          conflicted: Already exists a event in this time range
