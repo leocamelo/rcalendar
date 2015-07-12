@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  before_save :remove_time_if_all_day # line 16
+  before_save :remove_time_definitions, if: :all_day? # line 16
 
   # order the events by start_date
   default_scope { order :start_date }
@@ -13,11 +13,9 @@ class Event < ActiveRecord::Base
   private
 
   # remove time definitions if event is all day
-  def remove_time_if_all_day
-    if all_day?
-      self.start_time = nil
-      self.end_time = nil
-    end
+  def remove_time_definitions
+    self.start_time = nil
+    self.end_time = nil
   end
 
 end
