@@ -7,7 +7,7 @@ class Api::V1::EventsController < ApplicationController
   def index
     respond_to do |format|
       format.json do
-        year = params[:year].to_i || Date.today.year
+        year = (params[:year] || Date.today.year).to_i
         @events = Event.find_by_year(year)
         render json: @events, status: :ok #200
       end
