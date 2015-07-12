@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
 
   # remove time definitions if event is all day
   before_save :remove_time_definitions, if: :all_day?
+  # format time definitions for database
+  before_save :set_time_format, unless: :all_day?
 
   # order the events by start_date
   default_scope { order :start_date }
@@ -36,6 +38,12 @@ class Event < ActiveRecord::Base
   def remove_time_definitions
     self.start_time = nil
     self.end_time = nil
+  end
+
+  # format time values in event
+  def set_time_format
+    self.start_time = start_time.try(:strftime, '%H:%M:%S')
+    self.end_time = end_time.try(:strftime, '%H:%M:%S')
   end
 
 end
