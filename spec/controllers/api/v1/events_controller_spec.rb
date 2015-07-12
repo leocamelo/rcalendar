@@ -59,7 +59,8 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       end
 
       it 'render @event.errors in json format' do
-        expect(response.body).to eq(subject.errors.to_json)
+        errors = { errors: subject.errors }
+        expect(response.body).to eq(errors.to_json)
       end
     end
 
@@ -85,16 +86,12 @@ RSpec.describe Api::V1::EventsController, type: :controller do
           expect(subject.title).to eq(params[:title])
         end
 
-        it 'responds with HTTP 200 status code' do
-          expect(response).to have_http_status(200)
+        it 'responds with HTTP 204 status code' do
+          expect(response).to have_http_status(204)
         end
 
         it 'assign updated event into @event' do
           expect(subject).to eq(event)
-        end
-
-        it 'render @event in json format' do
-          expect(response.body).to eq(subject.to_json)
         end
       end
 
@@ -112,7 +109,8 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         end
 
         it 'render @event.errors in json format' do
-          expect(response.body).to eq(subject.errors.to_json)
+          errors = { errors: subject.errors }
+          expect(response.body).to eq(errors.to_json)
         end
       end
 
