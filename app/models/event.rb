@@ -31,6 +31,17 @@ class Event < ActiveRecord::Base
     where(started_at: range)
   end
 
+  # extends default behavior for json serializer
+  def as_json(options = {})
+    extensions = {
+      start_date: started_at.to_date.to_s,
+      start_time: started_at.strftime('%H:%M:%S'),
+      end_date: ended_at.to_date.to_s,
+      end_time: ended_at.strftime('%H:%M:%S')
+    }
+    super(options).merge(extensions)
+  end
+
   private
 
   # ended_at is by default 1 hour forward from started_at
