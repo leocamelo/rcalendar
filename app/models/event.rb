@@ -13,20 +13,22 @@ class Event < ActiveRecord::Base
   # find all events by date
   def self.find_by_date(args = {})
     year = (args[:year] || Date.today.year).to_i
-    matcher =
+    range =
     if args[:month]
       month = args[:month].to_i
       if args[:day]
-        Date.new(year, month, args[:day].to_i)
+        day = args[:day].to_i
+        date = DateTime.new(year, month, day)
+        (date.beginning_of_day)..(date.end_of_day)
       else
-        date = Date.new(year, month)
+        date = DateTime.new(year, month)
         (date.beginning_of_month)..(date.end_of_month)
       end
     else
-      date = Date.new(year)
+      date = DateTime.new(year)
       (date.beginning_of_year)..(date.end_of_year)
     end
-    where(started_at: matcher)
+    where(started_at: range)
   end
 
   private
