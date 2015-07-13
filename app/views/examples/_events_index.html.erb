@@ -21,10 +21,25 @@
   </article>
   <aside>
     <h3>Exemplo de código</h3>
-    <div class="examples curl">
-      <code class="curl">
-        curl -X GET "<%= api_v1_events_url month: 2 %>"
-      </code>
+    <div class="code">
+<pre class="curl">
+curl -X GET "<%= api_v1_events_url month: 2 %>"
+</pre>
+<pre class="ruby">
+require 'uri'
+require 'net/http'
+
+uri = URI('<%= api_v1_events_url month: 2 %>')
+puts Net::HTTP.get(uri)
+</pre>
+<pre class="jquery">
+$.ajax({
+  url: '<%= api_v1_events_url month: 2 %>',
+  dataType: 'json', method: 'GET'
+}).done(function(json){
+  console.log(json);
+});
+</pre>
     </div>
   </aside>
 </section>

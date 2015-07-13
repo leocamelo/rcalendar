@@ -5,17 +5,37 @@
       Também é possível atualizar um evento através da rota
       <span>/api/v1/events/<strong>:id</strong></span>, usando
       o método <span>PATCH</span> e referenciando o evento que deseja
-      atualizar em <span><strong>:id</strong></span> .
+      atualizar em <span><strong>:id</strong></span>.
     </p>
     <%= render 'events_params' %>
   </article>
   <aside>
     <h3>Exemplo de código</h3>
-    <div class="examples">
-      <code class="curl">
-        curl -X PATCH -F "event[description]=A philosophy party!"
-        "<%= api_v1_events_url %>"
-      </code>
+    <div class="code">
+<pre class="curl">
+curl -X PATCH -F "event[description]=A philosophy party!" "<%= api_v1_event_url(1) %>"
+</pre>
+<pre class="ruby">
+require 'uri'
+require 'net/http'
+
+uri = URI('<%= api_v1_event_url(1) %>')
+params = URI.encode_www_form(event: { description: 'A philosophy party!' })
+puts Net::HTTP.new(uri).patch('/', params)
+</pre>
+<pre class="jquery">
+$.ajax({
+  url: '<%= api_v1_event_url(1) %>',
+  data: {
+    event: {
+      description: 'A philosophy party!'
+    }
+  },
+  dataType: 'json', method: 'PATCH'
+}).done(function(json){
+  console.log(json);
+});
+</pre>
     </div>
   </aside>
 </section>

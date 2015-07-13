@@ -57,7 +57,20 @@ body.examples{
     line-height: 80px;
     h1{ float: left; }
     nav{ float: right; }
-    ul{ display: inline-block; }
+    ul{
+      display: inline-block;
+      margin-left: 3px;
+      li{
+        display: inline-block;
+        a{
+          display: inline-block;
+          padding: 0 7px;
+          color: lighten($dark, 25%);
+          &:hover{ color: $dark; }
+          &.active{ color: $primary; }
+        }
+      }
+    }
   }
   main{
     margin-top: 80px;
@@ -74,18 +87,18 @@ body.examples{
   }
   article{ width: 40%; }
   aside{
-    width: 59%;
+    width: 55%;
+    margin-left: 4%;
     padding: 0 40px;
     h3{
       color: lighten($dark, 10%);
-      text-align: center;
       margin-bottom: 20px;
     }
-    .examples{
-      padding: 40px;
-      text-align: left;
+    .code{ background-color: $fade; }
+    pre{
+      padding: 30px 25px;
       overflow: auto;
-      background-color: $fade;
+      &:not(.curl){ display: none; }
     }
   }
   footer{

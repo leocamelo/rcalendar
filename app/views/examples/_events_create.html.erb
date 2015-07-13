@@ -9,12 +9,35 @@
   </article>
   <aside>
     <h3>Exemplo de código</h3>
-    <div class="examples">
-      <code class="curl">
-        curl -X POST -F "event[title]=Sofia's birthday"
-        -F "event[started_at]=2015-07-12T17:00:36-03:00"
-        "<%= api_v1_events_url %>"
-      </code>
+    <div class="code">
+<pre class="curl">
+curl -X POST -F "event[title]=Sofia's birthday" -F "event[started_at]=2015-07-12T17:00:36-03:00" "<%= api_v1_events_url %>"
+</pre>
+<pre class="ruby">
+require 'uri'
+require 'net/http'
+
+uri = URI('<%= api_v1_events_url %>')
+params = {
+  event: { title: "Sofia's birthday",
+  started_at: '2015-07-12T17:00:36-03:00' }
+}
+puts Net::HTTP.post_form(uri, params)
+</pre>
+<pre class="jquery">
+$.ajax({
+  url: '<%= api_v1_events_url %>',
+  data: {
+    event: {
+      title: "Sofia's birthday",
+      started_at: '2015-07-12T17:00:36-03:00'
+    }
+  },
+  dataType: 'json', method: 'POST'
+}).done(function(json){
+  console.log(json);
+});
+</pre>
     </div>
   </aside>
 </section>
