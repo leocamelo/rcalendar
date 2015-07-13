@@ -1,0 +1,21 @@
+<section>
+  <article>
+    <%= anchor_title 'Atualizar um evento' %>
+    <p>
+      Também é possível atualizar um evento através da rota
+      <span>/api/v1/events/<strong>:id</strong></span>, usando
+      o método <span>PATCH</span> e referenciando o evento que deseja
+      atualizar em <span><strong>:id</strong></span> .
+    </p>
+    <%= render 'events_params' %>
+  </article>
+  <aside>
+    <h3>Exemplo de código</h3>
+    <div class="examples">
+      <code class="curl">
+        curl -X PATCH -F "event[description]=A philosophy party!"
+        "<%= api_v1_events_url %>"
+      </code>
+    </div>
+  </aside>
+</section>

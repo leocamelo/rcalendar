@@ -1,0 +1,31 @@
+<header>
+  <div class="wrapper">
+    <h1><%= link_to 'rCalendar', root_path %></h1>
+    <nav>
+      Exemplos em
+      <ul>
+        <li><a href="#">cURL</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrapper">
+    <section>
+      <p class="lean">
+        Este é o guia do <span>rCalendar</span>, aqui vamos abordar as rotas
+        da api v1, além de todas as suas funcionalidades e características.
+      </p>
+    </section>
+    <%= render 'events_index' %>
+    <%= render 'events_create' %>
+    <%= render 'events_update' %>
+  </div>
+</main>
+<footer>
+  <div class="wrapper">
+    <a href="//github.com/leonardocamelo/rcalendar" target="_blank">
+      github/leonardocamelo/rcalendar
+    </a>
+  </div>
+</footer>

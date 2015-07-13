@@ -1,0 +1,20 @@
+<section>
+  <article>
+    <%= anchor_title 'Adicionar um evento' %>
+    <p>
+      Você pode adicionar um evento ao calendário a partir da rota
+      <span>/api/v1/events</span> com o método <span>POST</span>.
+    </p>
+    <%= render 'events_params' %>
+  </article>
+  <aside>
+    <h3>Exemplo de código</h3>
+    <div class="examples">
+      <code class="curl">
+        curl -X POST -F "event[title]=Sofia's birthday"
+        -F "event[started_at]=2015-07-12T17:00:36-03:00"
+        "<%= api_v1_events_url %>"
+      </code>
+    </div>
+  </aside>
+</section>

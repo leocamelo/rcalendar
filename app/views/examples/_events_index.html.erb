@@ -1,0 +1,30 @@
+<section>
+  <article>
+    <%= anchor_title 'Listar eventos' %>
+    <p>
+      Para receber a lista de eventos acesse
+      <span>/api/v1/events</span> com o método <span>GET</span>.
+    </p>
+    <p>
+      Por padrão, o sistema retornará todos os eventos deste ano, a partir
+      do mês atual. Você pode receber eventos de outro ano informando o
+      paramêtro <span>year</span> na query string. Para receber eventos de
+      um mês específico, use o parâmetro <span>month</span> informando o mês
+      em formado numérido, onde 1 = Janeiro e 12 = Dezembro. Para restringir
+      a busca para apenas um dia use o parâmetro <span>day</span>.
+    </p>
+    <p>
+      Você pode incluir o mês na busca sem informar um ano, será levado em
+      consideração o ano vigente, porém o sistema não comportará uma busca
+      por dia sem informar o mês.
+    </p>
+  </article>
+  <aside>
+    <h3>Exemplo de código</h3>
+    <div class="examples curl">
+      <code class="curl">
+        curl -X GET "<%= api_v1_events_url month: 2 %>"
+      </code>
+    </div>
+  </aside>
+</section>

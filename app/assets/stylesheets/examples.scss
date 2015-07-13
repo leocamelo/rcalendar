@@ -1,0 +1,111 @@
+$wrap: 989px;
+$offset: 15px;
+$primary: #ee6e73;
+$dark: #444;
+$fade: #f0f0f0;
+$light: #fff;
+
+*{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+body.examples{
+  margin: 0;
+  font-family: sans-serif;
+  color: $dark;
+  background-color: $light;
+  font-weight: lighter;
+  .wrapper{
+    width: 100%;
+    max-width: $wrap + ($offset * 2);
+    margin: auto;
+    padding: 0 $offset;
+  }
+  h1, h2, h3, h4{
+    font-weight: lighter;
+    margin: 0;
+  }
+  a{
+    text-decoration: none;
+    color: $primary;
+  }
+  p{
+    font-size: 1.1em;
+    line-height: 1.2em;
+  }
+  span{ color: lighten($primary, 8%); }
+  strong{
+    color: $primary;
+    font-weight: normal;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  small{ color: lighten($dark, 20%); }
+  header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $fade;
+    z-index: 9;
+    -webkit-backface-visibility: hidden;
+    height: 80px;
+    line-height: 80px;
+    h1{ float: left; }
+    nav{ float: right; }
+    ul{ display: inline-block; }
+  }
+  main{
+    margin-top: 80px;
+    padding: 20px 0;
+  }
+  section{
+    margin-bottom: 40px;
+    border-bottom: 1px dashed darken($fade, 9%);
+    &:last-child{ border-bottom: none; }
+  }
+  article, aside{
+    display: inline-block;
+    vertical-align: top;
+  }
+  article{ width: 40%; }
+  aside{
+    width: 59%;
+    padding: 0 40px;
+    h3{
+      color: lighten($dark, 10%);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .examples{
+      padding: 40px;
+      text-align: left;
+      overflow: auto;
+      background-color: $fade;
+    }
+  }
+  footer{
+    text-align: right;
+    line-height: 60px;
+    border-top: 1px solid $fade;
+  }
+  p.lean{
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    font-size: 1.3em;
+    line-height: 1.4em;
+  }
+  ul.params{
+    margin: 10px 5px 40px 5px;
+    li{
+      margin: 8px 0;
+      line-height: 1.3em;
+    }
+  }
+}
