@@ -39,6 +39,7 @@ exemplos em algumas linguagens, visite o [Demo Online](https://rcalendar.herokua
 
 ## Contribua
 Gostou do projeto e quer contribuir com algo?
+
 1. Faça um fork do repositório
 2. Adicione suas correções ou novas features
 3. Não se esqueça dos testes, use [RSpec](http://rspec.info/)
