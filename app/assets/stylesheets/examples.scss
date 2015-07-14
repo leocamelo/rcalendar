@@ -11,8 +11,6 @@ $light: #fff;
   -moz-box-sizing: border-box;
 }
 body.examples{
-  margin: 0;
-  font-family: sans-serif;
   color: $dark;
   background-color: $light;
   font-weight: lighter;
@@ -97,7 +95,6 @@ body.examples{
     .code{ background-color: $fade; }
     pre{
       padding: 30px 25px;
-      overflow: auto;
       &:not(.curl){ display: none; }
     }
   }
