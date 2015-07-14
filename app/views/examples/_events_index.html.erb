@@ -23,22 +23,28 @@
     <h3>Exemplo de código</h3>
     <div class="code">
 <pre class="curl">
+  <code>
 curl -X GET "<%= api_v1_events_url month: 2 %>"
+  </code>
 </pre>
 <pre class="ruby">
+  <code>
 require 'uri'
 require 'net/http'
 
 uri = URI('<%= api_v1_events_url month: 2 %>')
 puts Net::HTTP.get(uri)
+  </code>
 </pre>
 <pre class="jquery">
+  <code>
 $.ajax({
   url: '<%= api_v1_events_url month: 2 %>',
   dataType: 'json', method: 'GET'
 }).done(function(json){
   console.log(json);
 });
+  </code>
 </pre>
     </div>
   </aside>

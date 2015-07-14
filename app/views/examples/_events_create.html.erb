@@ -11,9 +11,12 @@
     <h3>Exemplo de código</h3>
     <div class="code">
 <pre class="curl">
+  <code>
 curl -X POST -F "event[title]=Sofia's birthday" -F "event[started_at]=2015-07-12T17:00:36-03:00" "<%= api_v1_events_url %>"
+  </code>
 </pre>
 <pre class="ruby">
+  <code>
 require 'uri'
 require 'net/http'
 
@@ -23,8 +26,10 @@ params = {
   started_at: '2015-07-12T17:00:36-03:00' }
 }
 puts Net::HTTP.post_form(uri, params)
+  </code>
 </pre>
 <pre class="jquery">
+  <code>
 $.ajax({
   url: '<%= api_v1_events_url %>',
   data: {
@@ -37,6 +42,7 @@ $.ajax({
 }).done(function(json){
   console.log(json);
 });
+  </code>
 </pre>
     </div>
   </aside>
