@@ -1,5 +1,4 @@
 class Api::V1::EventsController < Api::V1::BaseController
-
   # GET /api/v1/events
   def index
     date_query = params.permit(:year, :month, :day)
@@ -21,7 +20,7 @@ class Api::V1::EventsController < Api::V1::BaseController
       @event.update(event_params)
       respond_with @event
     else
-      render json: { error: :not_found }, status: :not_found #404
+      render json: { error: :not_found }, status: :not_found
     end
   end
 
@@ -32,5 +31,4 @@ class Api::V1::EventsController < Api::V1::BaseController
     params.require(:event).permit(:title, :description,
     :location, :started_at, :ended_at, :all_day)
   end
-
 end

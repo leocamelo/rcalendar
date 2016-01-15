@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::EventsController, type: :controller do
-
   describe 'GET #index' do
     before { get :index, format: :json }
     subject { assigns :events }
@@ -69,18 +68,12 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         expect(response.body).to eq(errors.to_json)
       end
     end
-
   end
 
   describe 'PATCH #update' do
-
     context 'when event exists' do
-      let :event do
-        create(:event)
-      end
-      before do
-        patch :update, format: :json, id: event.id, event: params
-      end
+      let(:event) { create(:event) }
+      before { patch :update, format: :json, id: event.id, event: params }
       subject { assigns :event }
 
       context 'with valid params' do
@@ -102,9 +95,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       end
 
       context 'with invalid params' do
-        let :params do
-          { title: nil }
-        end
+        let(:params) { { title: nil } }
 
         it 'not updated the event' do
           expect(subject.title).to_not eq(event.title)
@@ -123,9 +114,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
     end
 
     context 'then event not exists' do
-      before do
-        patch :update, format: :json, id: 0
-      end
+      before { patch :update, format: :json, id: 0 }
 
       it 'responds with HTTP 404 status code' do
         expect(response).to have_http_status(404)
@@ -136,7 +125,5 @@ RSpec.describe Api::V1::EventsController, type: :controller do
         expect(response.body).to eq(message)
       end
     end
-
   end
-
 end

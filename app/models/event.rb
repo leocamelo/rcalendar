@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-
   # for set alerts in json response
   attr_accessor :alert
 
@@ -17,9 +16,9 @@ class Event < ActiveRecord::Base
   def self.find_by_date(options = {})
     year = (options[:year] || Date.today.year).to_i
     range =
-    if options[:month]
+    if options[:month].present?
       month = options[:month].to_i
-      if options[:day]
+      if options[:day].present?
         day = options[:day].to_i
         date = Date.new(year, month, day)
         (date.beginning_of_day)..(date.end_of_day)
@@ -37,19 +36,20 @@ class Event < ActiveRecord::Base
 
   # check if has other event conflicted
   def has_conflicted_event?
-    self.class.where.not(id: self).select do |ev|
+    conflicteds = Event.where.not(id: self).select do |ev|
       ev.started_at <= ended_at || ev.ended_at >= started_at
-    end.any?
+    end
+    conflicteds.any?
   end
 
   # extends default behavior for json response
   def as_json(options = {})
     extensions = {
-      start_date: started_at.to_date.to_s,
-      start_time: started_at.strftime('%H:%M:%S'),
-      end_date: ended_at.to_date.to_s,
-      end_time: ended_at.strftime('%H:%M:%S')
-    }.stringify_keys!
+      'start_date' => started_at.to_date.to_s,
+      'start_time' => started_at.strftime('%H:%M:%S'),
+      'end_date' => ended_at.to_date.to_s,
+      'end_time' => ended_at.strftime('%H:%M:%S')
+    }
     super(options.merge(methods: :alert)).merge(extensions)
   end
 
@@ -59,5 +59,4 @@ class Event < ActiveRecord::Base
   def default_ended_at
     self.ended_at = started_at + 1.hour if ended_at.blank?
   end
-
 end

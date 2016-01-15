@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -26,8 +26,6 @@ group :development, :test do
   gem 'spring'
   # RSpec for unit tests
   gem 'rspec-rails'
-  # collection of testing matchers
-  gem 'shoulda-matchers'
   # fixtures replacement with FactoryGirl
   gem 'factory_girl_rails'
 end

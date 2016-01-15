@@ -3,11 +3,12 @@ Uma simples e enxuta API de calendário feita com [Ruby on Rails](http://rubyonr
 
 ## Iniciando
 Apenas clone este repositório no seu ambiente local ou no seu servidor,
-intale as dependências com bundle, inicie um banco de dados e está
+intale as dependências com bundler, inicie um banco de dados e está
 pronto para adicionar seus eventos!
 
 ```bash
 $ git clone https://github.com/leonardocamelo/rcalendar.git
+$ cd rcalendar
 $ bundle install
 $ rake db:setup
 $ unicorn # ou 'rails server' em ambiente de desenvolvimento
@@ -31,9 +32,9 @@ Para mais informações das utilidades acima, como parâmetros e formatos, além
 exemplos em algumas linguagens, visite o [Demo Online](https://rcalendar.herokuapp.com) da api.
 
 ## Próximas tarefas
-- Traduzir a documentação e os exemplos para inglês
 - Configurar integração com [Travis CI](https://travis-ci.org/)
-- Adicionar sistema de seguraça com tokens
+- Traduzir a documentação e os exemplos para inglês
+- Adicionar sistema de seguraça com OAuth2
 - Adicionar action destroy ao crud
 - Criar exemplos em mais linguagens
 
