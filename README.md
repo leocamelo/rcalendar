@@ -1,4 +1,7 @@
 # rCalendar
+
+[![Build Status](https://travis-ci.org/leonardocamelo/rcalendar.svg?branch=master)](https://travis-ci.org/leonardocamelo/rcalendar)
+
 Uma simples e enxuta API de calendário feita com [Ruby on Rails](http://rubyonrails.org/)
 
 ## Iniciando
