@@ -23,16 +23,15 @@ rotas e suas utilidades:
 ```
 METODO | CAMINHO            | UTILIDADE
 ---------------------------------------
-GET    | /api/v1/events     | Lista todos os eventos deste ano, a partir deste mês
-POST   | /api/v1/events     | Adiciona um evento no calendário
-PATCH  | /api/v1/events/:id | Atualiza o evento referenciado pela :id na rota
+GET    | /v1/events     | Lista todos os eventos deste ano, a partir deste mês
+POST   | /v1/events     | Adiciona um evento no calendário
+PATCH  | /v1/events/:id | Atualiza o evento referenciado pela :id na rota
 ```
 
 Para mais informações das utilidades acima, como parâmetros e formatos, além de
 exemplos em algumas linguagens, visite o [Demo Online](https://rcalendar.herokuapp.com) da api.
 
 ## Próximas tarefas
-- Configurar integração com [Travis CI](https://travis-ci.org/)
 - Traduzir a documentação e os exemplos para inglês
 - Adicionar sistema de seguraça com OAuth2
 - Adicionar action destroy ao crud

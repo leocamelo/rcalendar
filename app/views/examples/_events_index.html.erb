@@ -3,7 +3,7 @@
     <%= anchor_title 'Listar eventos' %>
     <p>
       Para receber a lista de eventos acesse
-      <span>/api/v1/events</span> com o método <span>GET</span>.
+      <span>/v1/events</span> com o método <span>GET</span>.
     </p>
     <p>
       Por padrão, o sistema retornará todos os eventos deste ano, a partir
@@ -24,7 +24,7 @@
     <div class="code">
 <pre class="curl">
   <code>
-curl -X GET "<%= api_v1_events_url month: 2 %>"
+curl -X GET "<%= v1_events_url month: 2 %>"
   </code>
 </pre>
 <pre class="ruby">
@@ -32,14 +32,14 @@ curl -X GET "<%= api_v1_events_url month: 2 %>"
 require 'uri'
 require 'net/http'
 
-uri = URI('<%= api_v1_events_url month: 2 %>')
+uri = URI('<%= v1_events_url month: 2 %>')
 puts Net::HTTP.get(uri)
   </code>
 </pre>
 <pre class="jquery">
   <code>
 $.ajax({
-  url: '<%= api_v1_events_url month: 2 %>',
+  url: '<%= v1_events_url month: 2 %>',
   dataType: 'json', method: 'GET'
 }).done(function(json){
   console.log(json);

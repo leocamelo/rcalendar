@@ -3,7 +3,7 @@
     <%= anchor_title 'Adicionar um evento' %>
     <p>
       Você pode adicionar um evento ao calendário a partir da rota
-      <span>/api/v1/events</span> com o método <span>POST</span>.
+      <span>/v1/events</span> com o método <span>POST</span>.
     </p>
     <%= render 'events_params' %>
   </article>
@@ -12,7 +12,7 @@
     <div class="code">
 <pre class="curl">
   <code>
-curl -X POST -F "event[title]=Sofia's birthday" -F "event[started_at]=2015-07-12T17:00:36-03:00" "<%= api_v1_events_url %>"
+curl -X POST -F "event[title]=Sofia's birthday" -F "event[started_at]=2015-07-12T17:00:36-03:00" "<%= v1_events_url %>"
   </code>
 </pre>
 <pre class="ruby">
@@ -20,7 +20,7 @@ curl -X POST -F "event[title]=Sofia's birthday" -F "event[started_at]=2015-07-12
 require 'uri'
 require 'net/http'
 
-uri = URI('<%= api_v1_events_url %>')
+uri = URI('<%= v1_events_url %>')
 params = {
   event: { title: "Sofia's birthday",
   started_at: '2015-07-12T17:00:36-03:00' }
@@ -31,7 +31,7 @@ puts Net::HTTP.post_form(uri, params)
 <pre class="jquery">
   <code>
 $.ajax({
-  url: '<%= api_v1_events_url %>',
+  url: '<%= v1_events_url %>',
   data: {
     event: {
       title: "Sofia's birthday",
