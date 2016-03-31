@@ -24,7 +24,7 @@ com o formato [JSON](http://json.org/) de serialização. Seguem as principais
 rotas e suas utilidades:
 
 ```
-METODO | CAMINHO            | UTILIDADE
+METODO | CAMINHO        | UTILIDADE
 ---------------------------------------
 GET    | /v1/events     | Lista todos os eventos deste ano, a partir deste mês
 POST   | /v1/events     | Adiciona um evento no calendário
