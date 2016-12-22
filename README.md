@@ -1,6 +1,6 @@
 # rCalendar
 
-[![Build Status](https://travis-ci.org/leonardocamelo/rcalendar.svg?branch=master)](https://travis-ci.org/leonardocamelo/rcalendar)
+[![Build Status](https://travis-ci.org/leocamelo/rcalendar.svg?branch=master)](https://travis-ci.org/leocamelo/rcalendar)
 
 Uma simples e enxuta API de calendário feita com [Ruby on Rails](http://rubyonrails.org/)
 
@@ -10,7 +10,7 @@ intale as dependências com bundler, inicie um banco de dados e está
 pronto para adicionar seus eventos!
 
 ```bash
-$ git clone https://github.com/leonardocamelo/rcalendar.git
+$ git clone https://github.com/leocamelo/rcalendar.git
 $ cd rcalendar
 $ bundle install
 $ rake db:setup
