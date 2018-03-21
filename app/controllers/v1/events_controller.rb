@@ -25,8 +25,8 @@ module V1
     private
 
     def event_params
-      params.require(:event).permit(:title, :description,
-        :location, :started_at, :ended_at, :all_day)
+      params.require(:event).permit(:title, :description, :location,
+                                    :started_at, :ended_at, :all_day)
     end
   end
 end

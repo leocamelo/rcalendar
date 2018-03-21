@@ -1,50 +1,59 @@
-$wrap: 989px;
-$offset: 15px;
+$wrap   : 989px;
+$offset : 15px;
 $primary: #ee6e73;
-$dark: #444;
-$fade: #f0f0f0;
-$light: #fff;
+$dark   : #444;
+$fade   : #f0f0f0;
+$light  : #fff;
 
-*{
+* {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-body.examples{
+
+body.examples {
   color: $dark;
   background-color: $light;
   font-weight: lighter;
-  .wrapper{
+
+  .wrapper {
     width: 100%;
     max-width: $wrap + ($offset * 2);
     margin: auto;
     padding: 0 $offset;
   }
-  h1, h2, h3, h4{
+
+  h1, h2, h3, h4 {
     font-weight: lighter;
     margin: 0;
   }
-  a{
+
+  a {
     text-decoration: none;
     color: $primary;
   }
-  p{
+
+  p {
     font-size: 1.1em;
     line-height: 1.2em;
   }
-  strong{
+
+  strong {
     color: $primary;
     font-weight: normal;
   }
-  ul{
+
+  ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  small{
+
+  small {
     color: lighten($dark, 20%);
   }
-  header{
+
+  header {
     position: fixed;
     top: 0;
     left: 0;
@@ -54,73 +63,92 @@ body.examples{
     -webkit-backface-visibility: hidden;
     height: 80px;
     line-height: 80px;
-    h1{
+
+    h1 {
       float: left;
     }
-    nav{
+
+    nav {
       float: right;
     }
-    ul{
+
+    ul {
       display: inline-block;
       margin-left: 3px;
-      li{
+
+      li {
         display: inline-block;
-        a{
+
+        a {
           display: inline-block;
           padding: 0 7px;
           color: lighten($dark, 25%);
-          &:hover{
+
+          &:hover {
             color: $dark;
           }
-          &.active{
+
+          &.active {
             color: $primary;
           }
         }
       }
     }
   }
-  main{
+
+  main {
     margin-top: 80px;
     padding: 20px 0;
   }
-  section{
+
+  section {
     margin-bottom: 40px;
     border-bottom: 1px dashed darken($fade, 9%);
-    &:last-child{
+
+    &:last-child {
       border-bottom: none;
     }
   }
-  article, aside{
+
+  article, aside {
     display: inline-block;
     vertical-align: top;
   }
-  article{
+
+  article {
     width: 40%;
   }
-  aside{
+
+  aside {
     width: 55%;
     margin-left: 4%;
     padding: 0 40px;
-    h3{
+
+    h3 {
       color: lighten($dark, 10%);
       margin-bottom: 20px;
     }
-    .code{
+
+    .code {
       background-color: $fade;
     }
-    pre{
+
+    pre {
       padding: 20px;
-      &:not(.curl){
+
+      &:not(.curl) {
         display: none;
       }
     }
   }
-  footer{
+
+  footer {
     text-align: right;
     line-height: 60px;
     border-top: 1px solid $fade;
   }
-  p.lean{
+
+  p.lean {
     text-align: center;
     width: 100%;
     max-width: 500px;
@@ -128,9 +156,11 @@ body.examples{
     font-size: 1.3em;
     line-height: 1.4em;
   }
-  ul.params{
+
+  ul.params {
     margin: 10px 5px 40px 5px;
-    li{
+
+    li {
       margin: 8px 0;
       line-height: 1.3em;
     }
