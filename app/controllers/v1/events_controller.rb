@@ -2,7 +2,7 @@ module V1
   class EventsController < BaseController
     def index
       date_query = params.permit(:year, :month, :day)
-      @events = Event.find_by_date(date_query)
+      @events = Event.by_date(date_query).order(:started_at)
       respond_with @events
     end
 

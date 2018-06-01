@@ -1,39 +1,34 @@
 class Event < ActiveRecord::Base
   attr_accessor :alert
 
-  before_save :default_ended_at, if: 'ended_at.blank?'
-
-  default_scope { order :started_at }
+  before_save :set_default_ended_at, if: 'ended_at.blank?'
 
   validates :title, presence: true
   validates :started_at, presence: true
 
-  def self.find_by_date(options = {})
+  def self.by_date(options = {})
     year = (options[:year] || Date.today.year).to_i
+
     range =
       if options[:month].present?
         month = options[:month].to_i
         if options[:day].present?
           day = options[:day].to_i
-          date = Date.new(year, month, day)
-          (date.beginning_of_day)..(date.end_of_day)
+          Date.new(year, month, day).all_day
         else
-          date = Date.new(year, month)
-          (date.beginning_of_month)..(date.end_of_month)
+          Date.new(year, month).all_month
         end
       else
         month = Date.today.month
-        date = Date.new(year, month)
-        (date.beginning_of_month)..(date.end_of_year)
+        Date.new(year, month).all_month
       end
+
     where(started_at: range)
   end
 
   def has_conflicted_event?
-    conflicteds = Event.where.not(id: self.id).select do |event|
-      event.started_at <= ended_at || event.ended_at >= started_at
-    end
-    conflicteds.any?
+    has_conflict = ['started_at <= ? OR ended_at >= ?', ended_at, started_at]
+    self.class.where.not(id: id).where(*has_conflict).exists?
   end
 
   def as_json(options = {})
@@ -48,7 +43,7 @@ class Event < ActiveRecord::Base
 
   private
 
-  def default_ended_at
+  def set_default_ended_at
     self.ended_at = started_at + 1.hour
   end
 end
