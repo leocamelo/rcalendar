@@ -6,20 +6,15 @@ class Event < ActiveRecord::Base
   validates :title, presence: true
   validates :started_at, presence: true
 
-  def self.by_date(options = {})
-    year = (options[:year] || Date.today.year).to_i
+  def self.by_date(year: nil, month: nil, day: nil)
+    today = Date.today
+    year = (year.presence || today.year).to_i
+    month = (month.presence || today.month).to_i
 
     range =
-      if options[:month].present?
-        month = options[:month].to_i
-        if options[:day].present?
-          day = options[:day].to_i
-          Date.new(year, month, day).all_day
-        else
-          Date.new(year, month).all_month
-        end
+      if day.present?
+        Date.new(year, month, day.to_i).all_day
       else
-        month = Date.today.month
         Date.new(year, month).all_month
       end
 

@@ -14,9 +14,9 @@ ExamplesController	app/controllers/examples_controller.rb	/^class ExamplesContro
 Rcalendar	config/application.rb	/^module Rcalendar$/;"	m
 V1	app/controllers/v1/base_controller.rb	/^class V1::BaseController < ApplicationController$/;"	c
 V1	app/controllers/v1/events_controller.rb	/^module V1$/;"	m
-anchor_title	app/helpers/application_helper.rb	/^  def anchor_title(title, tag = :h2)$/;"	f	class:ApplicationHelper
+anchor_title	app/helpers/application_helper.rb	/^  def anchor_title(title, tag: :h2)$/;"	f	class:ApplicationHelper
 as_json	app/models/event.rb	/^  def as_json(options = {})$/;"	f	class:Event
-by_date	app/models/event.rb	/^  def self.by_date(options = {})$/;"	F	class:Event
+by_date	app/models/event.rb	/^  def self.by_date(year: nil, month: nil, day: nil)$/;"	F	class:Event
 change	db/migrate/20150709235200_create_events.rb	/^  def change$/;"	f	class:CreateEvents
 create	app/controllers/v1/events_controller.rb	/^    def create$/;"	f	class:V1.EventsController
 event_params	app/controllers/v1/events_controller.rb	/^    def event_params$/;"	f	class:V1.EventsController

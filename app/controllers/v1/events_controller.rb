@@ -14,6 +14,7 @@ module V1
 
     def update
       @event = Event.find_by(id: params[:id])
+
       if @event.present?
         @event.update(event_params)
         respond_with @event
