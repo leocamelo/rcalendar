@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Rcalendar
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+CreateEvents	db/migrate/20150709235200_create_events.rb	/^class CreateEvents < ActiveRecord::Migration$/;"	c
+Event	app/models/event.rb	/^class Event < ActiveRecord::Base$/;"	c
+EventsController	app/controllers/v1/events_controller.rb	/^  class EventsController < BaseController$/;"	c	class:V1
+ExamplesController	app/controllers/examples_controller.rb	/^class ExamplesController < ApplicationController$/;"	c
+Rcalendar	config/application.rb	/^module Rcalendar$/;"	m
+V1	app/controllers/v1/base_controller.rb	/^class V1::BaseController < ApplicationController$/;"	c
+V1	app/controllers/v1/events_controller.rb	/^module V1$/;"	m
+anchor_title	app/helpers/application_helper.rb	/^  def anchor_title(title, tag = :h2)$/;"	f	class:ApplicationHelper
+as_json	app/models/event.rb	/^  def as_json(options = {})$/;"	f	class:Event
+by_date	app/models/event.rb	/^  def self.by_date(options = {})$/;"	F	class:Event
+change	db/migrate/20150709235200_create_events.rb	/^  def change$/;"	f	class:CreateEvents
+create	app/controllers/v1/events_controller.rb	/^    def create$/;"	f	class:V1.EventsController
+event_params	app/controllers/v1/events_controller.rb	/^    def event_params$/;"	f	class:V1.EventsController
+has_conflicted_event?	app/models/event.rb	/^  def has_conflicted_event?$/;"	f	class:Event
+index	app/controllers/examples_controller.rb	/^  def index; end$/;"	f	class:ExamplesController
+index	app/controllers/v1/events_controller.rb	/^    def index$/;"	f	class:V1.EventsController
+set_default_ended_at	app/models/event.rb	/^  def set_default_ended_at$/;"	f	class:Event
+update	app/controllers/v1/events_controller.rb	/^    def update$/;"	f	class:V1.EventsController
