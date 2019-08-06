@@ -1,6 +1,7 @@
 # rCalendar
 
 [![Build Status](https://travis-ci.org/leocamelo/rcalendar.svg?branch=master)](https://travis-ci.org/leocamelo/rcalendar)
+[![Maintainability](https://api.codeclimate.com/v1/badges/45a1bd79dd3d6c9e8abe/maintainability)](https://codeclimate.com/github/leocamelo/rcalendar/maintainability)
 
 Uma simples e enxuta API de calendário feita com [Ruby on Rails](http://rubyonrails.org/)
 

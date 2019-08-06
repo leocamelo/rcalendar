@@ -11,3 +11,12 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include FactoryBot::Syntax::Methods
 end
+
+class ActionController::TestResponse < ActionDispatch::TestResponse
+  def recycle!
+    # hack to avoid MonitorMixin double-initialize error:
+    @mon_mutex_owner_object_id = nil
+    @mon_mutex = nil
+    initialize
+  end
+end
